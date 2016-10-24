@@ -16,6 +16,6 @@ def hours_ahead(request, offset):
         raise Http404()
     dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
 #    assert False   # uncomment to dump local variables into debugger
-    html = "In %s hour(s), it will be %s." % (offset, dt)
-    return HttpResponse(html)
+    return render(request, 'hours_ahead.html', {'hour_offset': offset,
+                                                'next_time': dt})
 
